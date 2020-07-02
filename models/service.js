@@ -38,7 +38,17 @@ module.exports = {
         connection.query(sql, [id],(err, data)=>{
             callback(err, data);
         })
+    },
+    EditProject:(results, callback)=>{
+       console.log(results);
+       sql="UPDATE game_info SET game_title = ?, target_audience = ?, game_story = ?, game_description = ?, game_genre = ? WHERE Id = ?";
+        console.log(sql);
+        connection.query(sql, [results.game_title, results.target_audience, results.game_story, results.game_description, results.game_genre, results.id],(err)=>{
+            console.log(err);
+            callback(err);
+        })
     }
+    
 
     
 }

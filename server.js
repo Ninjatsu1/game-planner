@@ -41,6 +41,22 @@ app.get("/project_details/:id/", (req, res)=>{
   })
 })
 
+app.get("/edit_project/:id/", (req,res)=>{
+  id = req.params.id;
+  service.GetProjectDetails(id, (err, data)=>{
+    res.render("edit_project", {
+      "project_data" : data
+    })
+  })
+})
+app.post("/edit_project/:id/",(req, res)=>{
+  id = req.params.id;
+  service.EditProject(req.body, (err)=>{
+    res.redirect("/project_details/"+id)
+  })
+})
+
+
 
 app.listen(port, hostname, () => {
   console.log(`Server running at ${port}`);

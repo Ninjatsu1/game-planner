@@ -31,7 +31,9 @@
                
             
             <div class="col-10">
+                
                 <%project_data.forEach((project)=>{%>
+                <a href="/edit_project/<%=project.Id%>" class="btn btn-primary">Edit</a>
                 <h2><%=project.game_title%></h2>
                 
                 <h3>Game's description</h3>
