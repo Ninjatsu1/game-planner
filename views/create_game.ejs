@@ -8,6 +8,20 @@
     <title>Game planner</title>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Game planner</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            
+          </ul>
+        </div>
+      </nav>
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -23,6 +37,10 @@
                <div class="form-group">
                 <label for="game_title">Game's title</label>
                 <input type="text" id="game_title" name="game_title" class="form-control">
+               </div>
+               <div class="form-group">
+                   <label for="game_genre">Genre</label>
+                   <input class="form-control" id="genre" name="game_genre">
                </div>
                <div class="form-group">
                 <label for="target_audience">Target audience</label>

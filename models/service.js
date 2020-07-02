@@ -27,11 +27,18 @@ module.exports = {
         })
     },
     GetGames:(callback)=>{
-        sql ="SELECT * FROM game_info";
+        sql = "SELECT Id, game_title, game_description FROM game_info";
         connection.query(sql,(err, data)=>{
             callback(err, data);
 
         })
+    },
+    GetProjectDetails:(id, callback)=>{
+        sql = "SELECT * FROM game_info WHERE Id = ?";
+        connection.query(sql, [id],(err, data)=>{
+            callback(err, data);
+        })
     }
+
     
 }

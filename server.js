@@ -29,12 +29,17 @@ app.get("/create_game/",(req, res)=>{
 })
 app.post("/add_game/", (req, res)=>{
   service.AddGame(req.body, (err)=>{
-  
- 
       res.redirect("/");
+  });
+});
+app.get("/project_details/:id/", (req, res)=>{
+  id = req.params.id;
+  service.GetProjectDetails(id, (err, data)=>{
+    res.render("project_details",{
+      "project_data" : data
+    })
   })
 })
-
 
 
 app.listen(port, hostname, () => {
