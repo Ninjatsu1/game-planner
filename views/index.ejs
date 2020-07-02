@@ -12,7 +12,24 @@
         <h1>Game planner</h1>
             <a href="/create_game/" class="btn btn-success">Create new game</a>
             <hr>
+            <h2>Your current projects</h2>
+            <%if(games == ""){%>
+                <p>Start planning your first game!</p>
+                <%}else{%>
+            <%games.forEach((game)=>{%>
+            <div class="card">
+                <h5 class="card-header"><%=game.game_title%></h5><!--Title-->
+                <div class="card-body">
+                  <%=game.game_description%>
+                  <p class="card-text"></p> <!--Description-->
+                  <a href="#" class="btn btn-primary">Edit</a>
+                  <a href="#" class="btn btn-warning">Delete</a>
 
+                </div>
+              </div>
+              <%})%>
+              <%}%>
         </div>
+
 </body>
 </html>

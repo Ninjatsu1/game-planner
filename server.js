@@ -14,9 +14,12 @@ app.use(bodyParser.json()); //Body parser  for sending data
 app.use(bodyParser.urlencoded( { "extended" : true } )); //Session järjestyksessä on väliä
 
 app.get("/",(req, res)=>{
+ service.GetGames((err, data)=>{
   res.render("index",{
-
+    "games": data
   })
+ })
+  
 })
 app.get("/create_game/",(req, res)=>{
     

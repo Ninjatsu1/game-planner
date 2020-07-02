@@ -26,5 +26,12 @@ module.exports = {
             callback(err);
         })
     },
+    GetGames:(callback)=>{
+        sql ="SELECT * FROM game_info";
+        connection.query(sql,(err, data)=>{
+            callback(err, data);
+
+        })
+    }
     
 }
