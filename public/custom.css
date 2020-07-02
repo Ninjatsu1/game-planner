@@ -1,3 +1,15 @@
 .hint{
     font-size: small;
 }
+body {
+    background-color: #CBB9A8;
+}
+.customNavColour{
+    background-color: #0CBABA;
+}
+.card-header {
+    background-color: #334195;
+}
+.whiteLink{
+    color: #ffffff;
+}
