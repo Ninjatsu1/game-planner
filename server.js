@@ -55,7 +55,12 @@ app.post("/edit_project/:id/",(req, res)=>{
     res.redirect("/project_details/"+id)
   })
 })
-
+app.post("/delete/:id/",(req, res)=>{
+  id = req.params.id;
+  service.DeleteProject(req.body,(err)=>{
+    res.redirect("/");
+  })
+})
 
 
 app.listen(port, hostname, () => {

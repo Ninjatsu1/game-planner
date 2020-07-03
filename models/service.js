@@ -41,12 +41,17 @@ module.exports = {
         })
     },
     EditProject:(results, callback)=>{
-       console.log(results);
        sql="UPDATE game_info SET game_title = ?, target_audience = ?, game_story = ?, game_description = ?, game_genre = ?, team = ?, monetization = ? WHERE Id = ?";
-        console.log(sql);
         connection.query(sql, [results.game_title, results.target_audience, results.game_story,
                              results.game_description, results.game_genre, results.team,
                                 results.monetization, results.id],(err)=>{
+            callback(err);
+        })
+    },
+    DeleteProject:(result, callback)=>{
+        sql = "DELETE FROM game_info WHERE Id = ?";
+        console.log(result);
+        connection.query(sql, [result.Id], (err)=>{
             console.log(err);
             callback(err);
         })
