@@ -20,9 +20,10 @@ connection.connect((err)=>{
 module.exports = {
     AddGame: (results, callback)=>{
         console.log(results);
-        let sql = "INSERT INTO game_info (game_title, target_audience, game_story, game_description) VALUES (?,?,?,?)";
+        let sql = "INSERT INTO game_info (game_title, target_audience, game_story, game_description, team, monetization) VALUES (?,?,?,?,?, ?)";
         console.log(sql);
-        connection.query(sql, [results.game_title, results.target_audience, results.game_story, results.game_description], (err)=>{
+        connection.query(sql, [results.game_title, results.target_audience, results.game_story,
+                                 results.game_description, results.team, results.monetization], (err)=>{
             callback(err);
         })
     },
@@ -41,9 +42,11 @@ module.exports = {
     },
     EditProject:(results, callback)=>{
        console.log(results);
-       sql="UPDATE game_info SET game_title = ?, target_audience = ?, game_story = ?, game_description = ?, game_genre = ? WHERE Id = ?";
+       sql="UPDATE game_info SET game_title = ?, target_audience = ?, game_story = ?, game_description = ?, game_genre = ?, team = ?, monetization = ? WHERE Id = ?";
         console.log(sql);
-        connection.query(sql, [results.game_title, results.target_audience, results.game_story, results.game_description, results.game_genre, results.id],(err)=>{
+        connection.query(sql, [results.game_title, results.target_audience, results.game_story,
+                             results.game_description, results.game_genre, results.team,
+                                results.monetization, results.id],(err)=>{
             console.log(err);
             callback(err);
         })

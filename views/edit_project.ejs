@@ -8,17 +8,27 @@
              <input type="text" id="game_title" name="game_title" class="form-control" value="<%=project.game_title%>">
             </div>
             <div class="form-group">
+              <label for="game_decsription">Description</label>
+              <textarea id="game_decsription" name="game_description" class="form-control" rows="5"><%=project.game_description%></textarea>
+          </div>
+          <div class="form-group">
+            <label for="target_audience">Target audience</label>
+            <input type="text" class="form-control" name="target_audience" value="<%=project.target_audience%>"> 
+            </div>
+            <div class="form-group">
+              <label for="team">Team</label>
+              <textarea id="team" name="team" class="form-control" rows="5"><%=project.team%></textarea>
+          </div>
+          <div class="form-group">
+              <label for="monetization">Monetization</label>
+              <textarea name="monetization" class="form-control" rows="5"><%=project.monetization%></textarea>
+          </div>
+            <div class="form-group">
                 <label for="game_genre">Genre</label>
                 <input class="form-control" id="genre" name="game_genre" value="<%=project.game_genre%>">
             </div>
-            <div class="form-group">
-             <label for="target_audience">Target audience</label>
-             <input type="text" class="form-control" name="target_audience" value="<%=project.target_audience%>"> 
-             </div>
-             <div class="form-group">
-                <label for="game_decsription">Description</label>
-                <textarea id="game_decsription" name="game_description" class="form-control" rows="5"><%=project.game_description%></textarea>
-            </div>
+          
+             
              <div class="form-group">
                 <label for="game_story">Game's story</label>
                 <textarea class="form-control" id="game" name="game_story" rows="5"><%=project.game_story%></textarea>

@@ -12,4 +12,6 @@ body {
 }
 .whiteLink{
     color: #ffffff;
+    text-decoration: underline;
+
 }
