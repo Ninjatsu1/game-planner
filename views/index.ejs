@@ -3,49 +3,26 @@
       <%- include('includes/navbar'); -%>
     <div class="container">
         <h1>Game planner</h1>
-            <a href="/create_game/" class="btn btn-success">Create new game</a>
+            <a href="/create_game/" class="btn btn-success mt-3">Create new game</a>
             <hr>
             <h2>Your current projects</h2>
             <%if(games == ""){%>
                 <p>Start planning your first game!</p>
                 <%}else{%>
             <%games.forEach((game)=>{%>
-            <div class="card">
+            <div class="card mt-3 mb-3">
                 <h5 class="card-header"><a class="whiteLink" href="/project_details/<%=game.Id%>"><%=game.game_title%></a></h5><!--Title-->
                 <div class="card-body">
                  
                   <p class="card-text"> <%=game.game_description%></p> <!--Description-->
-                  <a href="/edit_project/<%=game.Id%>" class="btn btn-primary">Edit</a>
-                  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal">
-                    Delete
-                  </button>
+                  <a href="/edit_project/<%=game.Id_project%>" class="btn btn-primary">Edit</a>
+                  <form method="POST" action="/delete/<%=game.Id_project%>">
+                    <input type="hidden"name="Id" value="<%=game.Id_project%>">
+                    <input type="submit" class="btn btn-danger" onclick="confirmdelete()" value="Delete">
 
-                </div>
-              </div>
-              <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                     Are you sure that you want to delete project <%=game.game_title%>?
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Dismiss</button>
-                      
-                      <form method="POST" action="/delete/<%=game.Id%>">
-                        <input type="hidden"name="Id" value="<%=game.Id%>">
-                        <input type="submit" class="btn btn-danger" value="Delete">
-
-                      </form>
-                    </div>
+                  </form>
                   </div>
                 </div>
-              </div>
               <%})%>
               <%}%>
               <!-- Button trigger modal -->
@@ -55,5 +32,9 @@
 
         
             </div>
-
+<script>
+  function confirmdelete(){
+    confirm("Are you sure you want to delete=");
+  }
+</script>
             <%- include('includes/footer'); -%>

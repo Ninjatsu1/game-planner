@@ -28,20 +28,20 @@ module.exports = {
         })
     },
     GetGames:(callback)=>{
-        sql = "SELECT Id, game_title, game_description FROM game_info";
+        sql = "SELECT Id_project, game_title, game_description FROM game_info";
         connection.query(sql,(err, data)=>{
             callback(err, data);
 
         })
     },
     GetProjectDetails:(id, callback)=>{
-        sql = "SELECT * FROM game_info WHERE Id = ?";
+        sql = "SELECT * FROM game_info WHERE Id_project = ?";
         connection.query(sql, [id],(err, data)=>{
             callback(err, data);
         })
     },
     EditProject:(results, callback)=>{
-       sql="UPDATE game_info SET game_title = ?, target_audience = ?, game_story = ?, game_description = ?, game_genre = ?, team = ?, monetization = ? WHERE Id = ?";
+       sql="UPDATE game_info SET game_title = ?, target_audience = ?, game_story = ?, game_description = ?, game_genre = ?, team = ?, monetization = ? WHERE Id_project = ?";
         connection.query(sql, [results.game_title, results.target_audience, results.game_story,
                              results.game_description, results.game_genre, results.team,
                                 results.monetization, results.id],(err)=>{
@@ -49,7 +49,7 @@ module.exports = {
         })
     },
     DeleteProject:(result, callback)=>{
-        sql = "DELETE FROM game_info WHERE Id = ?";
+        sql = "DELETE FROM game_info WHERE Id_project = ?";
         console.log(result);
         connection.query(sql, [result.Id], (err)=>{
             console.log(err);

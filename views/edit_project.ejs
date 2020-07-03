@@ -2,7 +2,7 @@
       
       <div class="container">
         <%project_data.forEach((project)=>{%>
-        <form method="POST" action="/edit_project/<%=project.Id%>"> <!--More stuff will be added later-->
+        <form method="POST" action="/edit_project/<%=project.Id_project%>"> <!--More stuff will be added later-->
             <div class="form-group">
              <label for="game_title">Game's title</label>
              <input type="text" id="game_title" name="game_title" class="form-control" value="<%=project.game_title%>">
@@ -33,7 +33,7 @@
                 <label for="game_story">Game's story</label>
                 <textarea class="form-control" id="game" name="game_story" rows="5"><%=project.game_story%></textarea>
              </div>
-                <input type="hidden" name="id" value="<%=project.Id%>">
+                <input type="hidden" name="id" value="<%=project.Id_project%>">
              <input class="btn btn-success" type="submit" value="Save">
          </form>
          <%})%>
