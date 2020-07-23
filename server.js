@@ -40,7 +40,17 @@ app.get("/project_details/:id/", (req, res)=>{
     })
   })
 })
-
+app.get("/create_character/:id/", (req, res)=>{
+  id = req.params.id;
+  service.GetProjectDetails(id, (err, data)=>{
+    res.render("create_character",{
+      "project_data" : data
+    })
+  })
+})
+app.post("add_charater", (req, res)=>{
+  
+})
 app.get("/edit_project/:id/", (req,res)=>{
   id = req.params.id;
   service.GetProjectDetails(id, (err, data)=>{
