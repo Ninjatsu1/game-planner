@@ -56,12 +56,17 @@ module.exports = {
             callback(err);
         })
     },
-    AddCharacter:(result, callback)=>{
-      console.log("Hello");
-        
-    },
-   
-    
+    AddCharacter:(id, source, results, callback)=>{
+      sql = `INSERT INTO characters (project_id, character_name, character_age, race, backstory, stats,
+        alignment, organization, religion, positive_traits, negative_traits, image, likes, dislikes, notes)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
-    
+        connection.query(sql, [id, results.character_name, results.character_age, results.race, results.backstory,
+        results.stats, results.alignment, results.organization, results.religion,
+        results.positive_traits, results.negative_traits, source, results.likes, results.dislikes, results.notes], (err)=>{
+            console.log(sql);
+            console.log(err);
+            callback(err);
+        })
+    }
 }

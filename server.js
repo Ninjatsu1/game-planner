@@ -15,7 +15,6 @@ app.use(express.static("public")); //Example in ejs file just write href="/custo
 
 app.use(bodyParser.json()); //Body parser  for sending data
 app.use(bodyParser.urlencoded( { "extended" : true } )); //Session järjestyksessä on väliä
-
 // SET STORAGE
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -23,6 +22,7 @@ var storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     cb(null, file.fieldname + '-' + Date.now() + ".jpg")
+    
   }
 })
  
@@ -65,20 +65,26 @@ app.get("/create_character/:id/", (req, res)=>{
 })
 let upload = multer({ storage: storage }).single("image");
 
-app.post("/add_character/:id/", (req, res,next)=>{
+app.post("/add_character/:id/", (req, res)=>{
+  id = req.params.id;
   upload(req,res, function(err){
-    if(err){
-
-    }
-    res.json({
-      success: true,
-      message: "Image uploaded"
-
+  let path = req.file.destination;
+  let name = req.file.filename;
+  let source = path + "/"+name;
+    service.AddCharacter(id, source, req.body, (err)=>{
+      res.redirect("/");
     })
+  
   })
 });
  
-  
+   /* res.json({
+      success: true,
+      message: "Image uploaded",
+      path: path,
+      name : name,
+      source : source
+    })*/
 
 app.get("/edit_project/:id/", (req,res)=>{
   id = req.params.id;
