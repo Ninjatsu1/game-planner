@@ -55,7 +55,12 @@ module.exports = {
             console.log(err);
             callback(err);
         })
-    }
+    },
+    AddCharacter:(result, callback)=>{
+      console.log("Hello");
+        
+    },
+   
     
 
     

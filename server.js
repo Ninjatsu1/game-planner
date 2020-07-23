@@ -7,7 +7,6 @@ const service = require("./models/service");
 const bodyParser = require("body-parser"); //expressin mukana
 const multer = require("multer");
 const fs = require("fs");
-const upload = multer({dest : "./public/Images"});
 
 
 app.set("views", "./views");
@@ -16,6 +15,18 @@ app.use(express.static("public")); //Example in ejs file just write href="/custo
 
 app.use(bodyParser.json()); //Body parser  for sending data
 app.use(bodyParser.urlencoded( { "extended" : true } )); //Session järjestyksessä on väliä
+
+// SET STORAGE
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/Images')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now() + ".jpg")
+  }
+})
+ 
+
 
 app.get("/",(req, res)=>{
  service.GetGames((err, data)=>{
@@ -52,11 +63,23 @@ app.get("/create_character/:id/", (req, res)=>{
     })
   })
 })
-app.post("add_charater/:id/", upload.single("tiedosto"),(req, res)=>{
-  id = req.params.id;
-  file =  req.file;
-  console.log(req.file.filename)
-})
+let upload = multer({ storage: storage }).single("image");
+
+app.post("/add_character/:id/", (req, res,next)=>{
+  upload(req,res, function(err){
+    if(err){
+
+    }
+    res.json({
+      success: true,
+      message: "Image uploaded"
+
+    })
+  })
+});
+ 
+  
+
 app.get("/edit_project/:id/", (req,res)=>{
   id = req.params.id;
   service.GetProjectDetails(id, (err, data)=>{
