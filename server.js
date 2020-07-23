@@ -5,6 +5,10 @@ const port = process.env.PORT || 8080;
 const hostname = '127.0.0.1';
 const service = require("./models/service");
 const bodyParser = require("body-parser"); //expressin mukana
+const multer = require("multer");
+const fs = require("fs");
+const upload = multer({dest : "./public/Images"});
+
 
 app.set("views", "./views");
 app.set("view engine", "ejs");
@@ -48,8 +52,10 @@ app.get("/create_character/:id/", (req, res)=>{
     })
   })
 })
-app.post("add_charater", (req, res)=>{
-  
+app.post("add_charater/:id/", upload.single("tiedosto"),(req, res)=>{
+  id = req.params.id;
+  file =  req.file;
+  console.log(req.file.filename)
 })
 app.get("/edit_project/:id/", (req,res)=>{
   id = req.params.id;
