@@ -6,24 +6,25 @@
             <p class="hint">These can be edited later</p>
         </div>
     </div>
- 
+
     <div class="row">
-       
+
         <div class="col-10">
-            <form method="POST" action="/add_game/"> <!--More stuff will be added later-->
-               <div class="form-group">
-                <label for="game_title">Game's title</label>
-                <input type="text" id="game_title" name="game_title" class="form-control">
-               </div>
-               
+            <form method="POST" action="/add_game/">
+                <!--More stuff will be added later-->
+                <div class="form-group">
+                    <label for="game_title">Game's title</label>
+                    <input type="text" id="game_title" name="game_title" class="form-control">
+                </div>
+
                 <div class="form-group">
                     <label for="game_decsription">Description</label>
                     <textarea id="game_decsription" name="game_description" class="form-control" rows="5"></textarea>
                 </div>
-                
-               <div class="form-group">
-                <label for="target_audience">Target audience</label>
-                <input type="text" class="form-control" name="target_audience"> 
+
+                <div class="form-group">
+                    <label for="target_audience">Target audience</label>
+                    <input type="text" class="form-control" name="target_audience">
                 </div>
                 <div class="form-group">
                     <label for="team">Team</label>
@@ -38,15 +39,16 @@
                     <input class="form-control" id="genre" name="game_genre">
                 </div>
                 <div class="form-group">
-                   <label for="game_story">Game's story</label>
-                   <textarea class="form-control" id="game" name="game_story" rows="5"></textarea>
+                    <label for="game_story">Game's story</label>
+                    <textarea class="form-control" id="game" name="game_story" rows="5"></textarea>
                 </div>
-                
+
                 <input class="btn btn-success" type="submit" value="Save">
             </form>
         </div>
     </div>
- 
+
 </div>
 </body>
+
 </html>

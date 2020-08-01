@@ -63,6 +63,14 @@ app.get("/create_character/:id/", (req, res)=>{
     })
   })
 })
+app.get("/characters/:id/",(req,res)=>{
+  id = req.params.id;
+  service.GetProjectDetails(id, (err, data)=>{
+    res.render("characters",{
+      
+    })
+  })
+})
 let upload = multer({ storage: storage }).single("image");
 
 app.post("/add_character/:id/", (req, res)=>{
